@@ -1,0 +1,396 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --toggle-bg: #ccc;
+    --toggle-btn: #ffffff;
+}
+
+body.dark-mode {
+    --bg-color: #000000;
+    --text-color: #f0f0f0;
+    --toggle-bg: #585858; 
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    
+    -webkit-user-select: none; 
+    -ms-user-select: none;     
+    user-select: none;        
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.thumb {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    overflow: hidden; 
+}
+
+input:checked + .slider .thumb {
+    transform: translateX(20px);
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+    background: transparent !important;
+}
+
+.moon-icon {
+    opacity: 0; 
+}
+
+body.dark-mode .sun-icon {
+    opacity: 0; 
+}
+
+body.dark-mode .moon-icon {
+    opacity: 1; 
+}
+
+body.dark-mode .slider {
+    background-color: #444;
+}
+
+body.dark-mode img {
+    filter: invert(1); 
+}
+
+body.dark-mode .img > img {
+    filter: none;
+}
+
+body.dark-mode .theme-switch .icon {
+    filter: none !important;
+}
+    
+.fade-in {
+        opacity: 0;
+        transform: translateY(8px);
+        animation: fadeIn 700ms ease-out 120ms forwards;
+}
+
+@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.header-div,
+.content-div,
+.footer-div {
+    max-width: 900px; 
+    width: 100%;      
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;    
+    box-sizing: border-box;
+}
+
+.header-div { margin-top: 50px; text-align: center; }
+
+.toggle-button {
+    position: right;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.img {
+    display: flex;
+    align-items: center; 
+    gap: 30px;          
+    justify-content: center; 
+}
+
+.img > img{
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    grid-template-areas:
+        "name name"
+        "location location"
+        "level level"
+        "university university"
+        "email email";
+    gap: 6px 12px;
+    align-items: center;
+    text-align: left; 
+}
+
+.name-div { 
+    grid-area: name;
+    display: flex;
+    align-items: center; 
+    gap: 320px;           
+} 
+.location { grid-area: location; }
+.level    { grid-area: level; }
+.university { grid-area: university; }
+
+.name-div h1,
+.location p,
+.level p,
+.university p { margin: 0; }
+
+@media (max-width: 520px) {
+  .info { grid-template-columns: 1fr; grid-template-areas:
+      "name"
+      "level"
+      "university"
+      "location"
+      "email"; }
+  .email { justify-self: stretch; }
+}
+
+.name {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+}
+
+.level {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+
+.university {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+
+.location {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.btn-icon_email{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-email img,
+.email img {
+    width: 14px;
+    height: auto;
+    display: inline-block;
+}
+
+.btn-email {
+    background: transparent;
+    border: 1px solid #8f8f8f; 
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;               
+    padding: 4px 8px;       
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;        
+    line-height: 1;
+    min-height: 28px;      
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.btn-email:hover {
+    transform: translateY(-4px); /* raise slightly */
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.content-div {
+    margin: 0 auto;
+    width: 900px;
+    padding: 20px;
+    text-align: justify;
+}
+
+.about-me { 
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid #8f8f8f;
+    border-radius: 10px;
+}
+
+.about-me h2 {          
+    margin-top:5px;     
+}
+
+.project {
+    border: 1px solid #8f8f8f;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 40px;
+}
+
+.project h2 {
+    margin-top:5px;     
+}           
+
+.tech-stack {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid #8f8f8f;
+    border-radius: 10px;
+    padding: 10px;
+    margin:10px 0;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.tech-stack h2 {
+    margin-top:5px;     
+}
+
+.html, 
+.css, 
+.javascript,
+.java,
+.mysql,
+.github,
+.git,
+.android-studio,
+.visual-studio-code,
+.figma,
+.eclipseide {
+    border: 1px solid #8f8f8f;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px;
+    font-size: 12px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.social-media{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid #8f8f8f;
+    margin-top: -10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.social-media h2 {
+    margin-top:5px;     
+}
+
+.btn-social_linkedin{
+    background: transparent;
+    border: 1px solid #8f8f8f;
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;              
+    padding: 4px 8px;       
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;        
+    line-height: 1;
+    min-height: 28px;       
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.btn-icon_linkedin {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-social_linkedin:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.btn-social_github{
+    background: transparent;
+    border: 1px solid #8f8f8f;
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;               
+    padding: 4px 8px;       
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;       
+    line-height: 1;
+    min-height: 28px;       
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.btn-icon_github {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-social_github:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
