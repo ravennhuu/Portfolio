@@ -123,7 +123,7 @@ body.dark-mode .theme-switch .icon {
 .content-div,
 .footer-div {
     max-width: 900px; 
-    width: 100%;      
+    width: 95%;      
     margin-left: auto;
     margin-right: auto;
     padding: 20px;    
@@ -144,9 +144,11 @@ body.dark-mode .theme-switch .icon {
 
 .img {
     display: flex;
+    flex-direction: row; 
     align-items: center; 
     gap: 30px;          
     justify-content: center; 
+    flex-wrap: wrap;    
 }
 
 .img > img{
@@ -174,8 +176,10 @@ body.dark-mode .theme-switch .icon {
     grid-area: name;
     display: flex;
     align-items: center; 
-    gap: 320px;           
-} 
+    justify-content: space-between; 
+    gap: 20px;           
+}
+
 .location { grid-area: location; }
 .level    { grid-area: level; }
 .university { grid-area: university; }
@@ -185,6 +189,25 @@ body.dark-mode .theme-switch .icon {
 .level p,
 .university p { margin: 0; }
 
+@media (max-width: 768px) {
+    .img {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .info {
+        text-align: center; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .name-div {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
 @media (max-width: 520px) {
   .info { grid-template-columns: 1fr; grid-template-areas:
       "name"
@@ -193,6 +216,11 @@ body.dark-mode .theme-switch .icon {
       "location"
       "email"; }
   .email { justify-self: stretch; }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 .name {
@@ -253,13 +281,14 @@ body.dark-mode .theme-switch .icon {
 }
 
 .btn-email:hover {
-    transform: translateY(-4px); /* raise slightly */
+    transform: translateY(-4px); 
     box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
 .content-div {
     margin: 0 auto;
-    width: 900px;
+    width: 100%;     
+    max-width: 900px; 
     padding: 20px;
     text-align: justify;
 }
@@ -286,7 +315,16 @@ body.dark-mode .theme-switch .icon {
 
 .project h2 {
     margin-top:5px;     
-}           
+}
+
+.frontend, .backend, .devops, .tools, .tags-container {
+    display: flex;
+    flex-wrap: wrap;       
+    justify-content: flex-start; 
+    gap: 8px;              
+    width: 100%;           
+    margin-top: 10px;
+}
 
 .tech-stack {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -302,35 +340,55 @@ body.dark-mode .theme-switch .icon {
     margin-top:5px;     
 }
 
-.html, 
-.css, 
-.javascript,
-.java,
-.mysql,
-.github,
-.git,
-.android-studio,
-.visual-studio-code,
-.figma,
-.eclipseide {
+.tech-stack h3 {
+    width: 100%;    
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #8f8f8f;
     border-radius: 5px;
-    padding: 3px;
-    margin: 5px;
+    padding: 6px 12px;
     font-size: 12px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 32px;          
+    white-space: nowrap;   
+    box-sizing: border-box;
+}
+
+.footer-div {
+    max-width: 900px;
+    width: 100%; 
+    margin: 0 auto;
+    padding: 0 20px; 
+    box-sizing: border-box;
 }
 
 .social-media{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: 1px solid #8f8f8f;
-    margin-top: -10px;
+    margin-top: 10px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 10px 20px 10px;
 }
 
 .social-media h2 {
-    margin-top:5px;     
+    margin-top: 5px;
+    margin-bottom: 15px; 
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px;       
+    align-items: center;
+}
+
+.btn-social_linkedin, .btn-social_github {
+    margin: 0; 
 }
 
 .btn-social_linkedin{
